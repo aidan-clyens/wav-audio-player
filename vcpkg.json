@@ -1,0 +1,10 @@
+{
+    "name": "wav-audio-player",
+    "version": "0.1.0",
+    "description": "WAV Audio Player - A simple audio player for WAV files.",
+    "dependencies": [
+        "rtaudio",
+        "rtmidi",
+        "libsndfile"
+    ]
+}
