@@ -59,6 +59,9 @@ static const std::vector<Command> commands = {
     }
     std::cout << "Selected Audio Output Device: " << audio_device.to_string() << "\n";
     audio_output_device_id = device_id;
+  }),
+  Command("--verbose", "-vb", "Enable verbose logging", [](const char *){
+    MinimalAudioEngine::Logger::instance().enable_console_output(true);
   })
 };
 
@@ -108,6 +111,10 @@ void parse_command_line_arguments(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
+  // Setup logging
+  MinimalAudioEngine::Logger::instance().enable_console_output(false);
+  MinimalAudioEngine::Logger::instance().set_log_file("WavAudioPlayer.log");
+
   parse_command_line_arguments(argc, argv);
 
   LOG_INFO("Initializing WavAudioPlayer...");
